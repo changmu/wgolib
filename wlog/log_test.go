@@ -6,25 +6,26 @@ import (
 
 	"github.com/changmu/wgolib/wlog/consts"
 	"github.com/changmu/wgolib/wlog/opt"
+	log "github.com/sirupsen/logrus"
 	"github.com/smartystreets/goconvey/convey"
 )
 
 func TestNewLogger(t *testing.T) {
 	convey.Convey("", t, func() {
-		convey.Convey("test logger", func() {
-			logger = NewLogger(
+		convey.Convey("test log", func() {
+			InitLogger(
 				opt.WithLogLevel(consts.LogLevelTrace),
 				opt.WithFileName("test"),
 				opt.WithLogType(consts.LogTypeLogrus),
 				opt.WithKeepDays(2),
 			)
 
-			logger.Tracef("hello logrus")
+			log.Tracef("hello logrus")
 			time.Sleep(10 * time.Millisecond)
-			logger.Debugf("hello logrus")
-			logger.Infof("hello logrus")
+			log.Debugf("hello logrus")
+			log.Infof("hello logrus")
 			time.Sleep(20 * time.Millisecond)
-			logger.Errorf("hello logrus")
+			log.Errorf("hello logrus")
 		})
 	})
 }

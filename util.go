@@ -66,7 +66,7 @@ func GoAndWait(handlers ...func() error) error {
 				if e := recover(); e != nil {
 					buf := make([]byte, PanicBufLen)
 					buf = buf[:runtime.Stack(buf, false)]
-					log := wlog.NewLogger()
+					log := wlog.InitLogger()
 					log.Errorf("[PANIC]%v\n%s\n", e, buf)
 					once.Do(func() {
 						err = errs.New(errs.RetServerSystemErr, "panic found in call handlers")

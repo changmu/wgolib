@@ -11,7 +11,7 @@ func TestJSONEncode(t *testing.T) {
 	convey.Convey("", t, func() {
 		convey.Convey("test nil", func() {
 			convey.So(JSONEncode(nil), convey.ShouldEqual, "null")
-			log := wlog.NewLogger()
+			log := wlog.InitLogger()
 			log.Errorf("hello wlog")
 		})
 	})
